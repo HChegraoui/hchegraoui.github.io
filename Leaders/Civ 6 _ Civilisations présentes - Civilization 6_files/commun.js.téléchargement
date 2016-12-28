@@ -1,0 +1,224 @@
+xcvtoto='init';
+
+(function() {
+	var useSSL = 'https:' == document.location.protocol;
+	var src = (useSSL ? 'https:' : 'http:') +
+	'//www.googletagservices.com/tag/js/gpt.js';
+	document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+})();
+
+var $jQ_ = jQuery;
+
+$jQ_(document).ready(function($)
+{
+
+	if(document.getElementById("tester") == undefined){
+		if ($('#iframe_unblock_adblock').length!==0){
+			var divDisableForm = '<div class="iframe_unblock_adblock_div">';
+			divDisableForm += '<div class="iframe_unblock_adblock_forbidden"></div>';
+			divDisableForm += '<div class="iframe_unblock_adblock_text">Le formulaire n\'est pas disponible lorsque <strong>AdBlock</strong> est activé.</div>';
+			divDisableForm += '<a class="iframe_unblock_adblock_help" target="_blank" href="http://www.millenium.org/home/accueil/actualites/concours-unblock-quest-un-coucours-pour-ceux-qui-n-utilisent-pas-adblock-105603"></a>';
+			divDisableForm += '<a class="iframe_unblock_adblock_unblock" target="_blank" href="http://millenium-tv1.nexus.mnium.org/disable-blocker.html"></a>';
+			divDisableForm += '</div>';
+			$('#iframe_unblock_adblock').addClass("iframe_blocked");
+			$($('#iframe_unblock_adblock')).wrap("<div id='wrap_blocked_iframe'></div>");
+			$('#wrap_blocked_iframe').before(divDisableForm);
+		}
+	};
+	//$(".nano-content").css("overflow-y", "scroll");
+
+	$(".nav-primary").mCustomScrollbar({
+		scrollInertia: 0
+	});
+
+	$( '.nav-primary' ).bind( 'mousewheel DOMMouseScroll', function ( e ) {
+	    var e0 = e.originalEvent,
+	        delta = e0.wheelDelta || -e0.detail;
+	    
+	    this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+	    e.preventDefault();
+	});
+	/*$('#site_actif .sub-menu').slideDown();*/
+	/*if($(window).width()>1680){
+		$('#site_actif .sub-menu').slideDown();
+	}*/	
+
+	MjQchat = $('#live_embed_player_flash').attr('data-chat');
+
+	if ( MjQchat ) {
+		$('#irc').click(function(){
+			window.open( MjQchat, '_blank', 'menubar=0,toolbar=0,location=0,personalbar=0,status=0,resizable=1,scrollbars=1,width=750,height=421.875');
+		});	
+	}
+	
+	/*
+	if ( MjQirc == 'millenium2' ) {
+		$('#irc').click(function(){
+		window.open( 'https://chat-beta.millenium.org/#welcome/millenium_tv2', '_blank', 'menubar=0,toolbar=0,location=0,personalbar=0,status=0,resizable=1,scrollbars=1,width=750,height=421.875');
+	});
+	}
+	else {	
+	$('#irc').click(function(){
+		window.open('http://webchat.quakenet.org/?channels=' + MjQirc +'&uio=MTA9dHJ1ZQ49', '_blank', 'menubar=0,toolbar=0,location=0,personalbar=0,status=0,resizable=1,scrollbars=1,width=750,height=421.875');
+	});
+	}*/
+
+	if($("div.lazyload_ad").length!==0){
+		$("div.lazyload_ad").lazyLoadAd({ threshold : 1000}) ;
+	}
+	
+	if($("#col_droite img.lazy").length!==0){
+		$("#col_droite img.lazy").lazyload({ threshold : 50});
+	}
+
+	if($("#col_droite_portail img.lazy").length!==0){
+		$("#col_droite_portail img.lazy").lazyload({ threshold : 50});
+	}
+
+//	jQuery('.pubIframe>iframe').load(function(){jQuery(this).attr('height',jQuery(this).contents().find('body').outerHeight());});
+	iframeResize();
+//	setTimeout('reloadPub()', 90000);
+	jQuery('.pubContainer').each(function(){pubWriteStats(jQuery(this));});
+	if(jQuery('.pubRefresh.pubIframe').length>0)
+	{
+		setInterval('refreshIframe()',90000);
+	}
+	else if(jQuery('.pubRefresh').length>0)
+	{
+		setInterval('refreshPage()',90000);
+	}
+
+	$('.jLabel').jLabel({opacity : 0});
+
+	$('.synopsis,.img_une_news,.img_anpl_news,div.readmore').click(function()
+	{
+		var link=$(this).parent().find('.titre_liste_news>a:first');
+		$(location).attr('href',link.attr('href'));
+	});
+
+	$('.dossier').click(function()
+	{
+		var link=$(this).find('.dossier_lien:first');
+		$(location).attr('href',link.attr('href'));
+	});
+
+	jQuery('.click, .click_list, .click_comm').css('cursor','pointer');
+	$('.click').click(function()
+	{
+		var link=getLink(this);
+		linkto(link);
+		return false;
+	});
+	$('.click_list').click(function()
+	{
+		var link=getLinkList(this);
+		linkto(link);
+		return false;
+	});
+	$('.click_comm').click(function()
+	{
+		var link=getLink(this);
+		linkto(link,'#reagissez');
+	});
+	$('.click_list_comm').click(function()
+	{
+		var link=getLinkList(this);
+		linkto(link,'#reagissez');
+	});
+
+	$("#se-connecter").overlay({target: '#connexion_modalbox', top: '40%',mask:{color: '#000', zIndex: 9999}, effect: 'apple'});
+
+	var $resultContainer=$('#rechercheQResult'),
+		$searchInput=$('#rechercheQ');
+	$searchInput.keyup(function()
+	{
+		var value=$searchInput.val();
+		if(value.length>=2)
+		{
+			var url='/indexLight.php?module=recherche&action=recherche:instantane&q='+value;
+			$.ajax({url: url, cache: true,success: function(data)
+			{
+				$resultContainer.html(data);
+				$resultContainer.show();
+			}});
+		}
+		else
+		{
+			$resultContainer.html('');
+			$resultContainer.hide();
+		}
+	});
+
+	$('#actuPlus_tabs').tabs("div#actuPlus_panes > div");	
+});
+
+function getLink(element){
+	return $jQ_(element).parent().find('a.click_ref:first');
+}
+
+function getLinkList(element){
+	return $jQ_(element).find('a.click_ref:first');
+}
+
+function linkto(link,ancre)
+{
+	ancre = (typeof ancre === "undefined") ? '' : ancre;
+	if(link.attr('href')!=undefined);
+	{
+		if(link.attr('target')=='_blank')
+		{
+			window.open(link.attr('href')+ancre);
+			return false;
+		}
+		else
+			link = link.attr('href')+ancre;
+			location.href=link;
+	}
+}
+
+function iframeResize()
+{
+	$jQ_('.pubIframe>iframe').load(function($)
+	{
+		$(this).attr('height',$(this).contents().find('body').outerHeight());
+		$(this).attr('width',$(this).contents().find('body').outerWidth());
+	});
+	jQuery('.pubContainer.pubIframe').each(function(){pubWriteStats(jQuery(this));});
+}
+
+function refreshIframe()
+{
+	jQuery('.pubRefresh.pubIframe').each(function()
+	{
+		jQuery(this).html(jQuery(this).html());
+	});
+	iframeResize();
+}
+
+function refreshPage()
+{
+	window.location.reload();
+}
+
+function pubWriteStats($pub)
+{
+	if($pub.data('data-writestat')!=undefined)
+	{
+		jQuery.ajax({
+			url: $pub.data('data-writestat')
+		});
+	}
+}
+
+function closeMenu(btn)
+{
+	var subMenu=btn.parent().parent('div.submenu:first');
+	var topMenu=subMenu.parent('li.topMenu:first');
+	subMenu.slideUp('fast',closeMenu2(topMenu,subMenu));
+}
+
+function closeMenu2(topMenu,subMenu)
+{
+	topMenu.removeClass('active');
+	subMenu.find('.closeMenu').remove();
+}

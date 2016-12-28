@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'robotoRegular';
+    src: url('../assets/Roboto-Regular-webfont.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+   font-family: 'robotoCondesedRegular';
+    src: url('../assets/RobotoCondensed-Regular-webfont.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.hp_viewers {
+	font-family: 'robotoCondesedRegular';
+	color:#858b8e;
+	background-color:#1b1d1d;
+	font-size:11px;
+	margin: 5px 5px 4px 5px; 
+	position:absolute;
+	right:0px;
+	bottom: 0px;
+	padding:1px 3px 2px 3px;
+}
+.user_icone_twitch {
+	height:8px;
+	margin-right: 1px;
+}
+.page_tv_viewers{
+	font-family: 'robotoRegular';
+	color:#ffffff;
+	background-color:#282a2b;
+	font-size:12px;
+	display:inline-block;
+	padding:2px 5px 3px 5px;
+	position:relative;
+	top: -32px;
+	margin-left:3px;
+}
+.user_icone_twitch_tv {
+	height: 9px;
+}

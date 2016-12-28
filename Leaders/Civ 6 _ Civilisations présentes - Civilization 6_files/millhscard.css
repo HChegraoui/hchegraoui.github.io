@@ -1,0 +1,306 @@
+@font-face {
+	font-family: "millhs_Belwe";
+	src: url("https://tools.millenium.org/hearthstone-deckbuilder/css/fonts/Belwe.ttf");
+}
+@font-face {
+	font-family: "millhs_BelweIE";
+	src: url("https://tools.millenium.org/hearthstone-deckbuilder/css/fonts/Belwe.eot");
+}
+#millhstooltip {
+	position: absolute;
+	width: 276px;
+	height: 400px;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+	line-height: normal;
+	z-index: 9999;
+}
+#millhstooltip a {
+	text-decoration: none;
+}
+.millhscard {
+	height: 400px;
+	width: 276px;
+	background-size: 276px 400px;
+	font-family: millhs_Belwe, millhs_BelweIE;
+	color: white;
+	text-shadow: 1px 1px 1px rgb(0, 0, 0), -1px -1px 1px rgb(0, 0, 0), -1px 1px 1px rgb(0, 0, 0), 1px -1px 1px rgb(0, 0, 0), 1px 1px 1px rgb(0, 0, 0), -1px -1px 1px rgb(0, 0, 0), -1px 1px 1px rgb(0, 0, 0), 1px -1px 1px rgb(0, 0, 0);
+	font-size: 60px;
+	text-align: center;
+	margin: 0px auto;
+	padding: 0px;
+	-webkit-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-moz-transform-origin: top left;
+	transform-origin: top left;
+}
+#millhstooltip .millhs_card .millhscard {
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	-moz-transform: scale(1);
+	transform: scale(1);
+}
+.millhs_typeArme {
+	background-image: url("https://tools.millenium.org/hearthstone-deckbuilder/img/cards/cardArme.png");
+}
+.millhs_typeServiteur {
+	background-image: url("https://tools.millenium.org/hearthstone-deckbuilder/img/cards/cardServiteur.png");
+}
+.millhs_typeSort {
+	background-image: url("https://tools.millenium.org/hearthstone-deckbuilder/img/cards/cardSort.png");
+}
+.millhs_cost {
+	float: left;
+	height: 50px;
+	line-height: 40px;
+	width: 70px;
+	margin: 34px 0 0 2px;
+	padding: 0px;
+}
+.millhs_name {
+	float: left;
+	height: 30px;
+	width: 274px;
+	font-size: 18px;
+	margin: 0px;
+	padding: 0px;
+}
+.millhs_name span {
+	width: auto;
+	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	-webkit-transform-origin: bottom center;
+	-ms-transform-origin: bottom center;
+	-moz-transform-origin: bottom center;
+	transform-origin: bottom center;
+}
+.millhs_small {
+	font-size: 13px;
+}
+.millhs_desc {
+	float: left;
+	height: 90px;
+	width: 195px;
+	margin: 27px 39px 0 42px;
+	padding: 0px;
+	color: black;
+	font-family: Arial;
+	text-shadow: 0px 0px 0px rgb(0, 0, 0);
+	font-size: 14px;
+}
+.millhs_desc div {
+	position: relative;
+	top: 50%;
+	margin: 0px;
+	padding: 0px;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.millhs_attack {
+	float: left;
+	height: 50px;
+	line-height: 40px;
+	width: 70px;
+	margin: -13px 0 0 6px;
+	padding: 0px;
+}
+.millhs_minion {
+	float: left;
+	height: 20px;
+	width: 130px;
+	margin: 5px 0 0 3px;
+	padding: 0px;
+	font-size: 14px;
+}
+.millhs_typeSort .millhs_minion, .millhs_typeArme .millhs_minion {
+	display: none;
+}
+.millhs_life {
+	float: right;
+	height: 50px;
+	line-height: 40px;
+	width: 70px;
+	margin: -13px -3px 0 0;
+	padding: 0px;
+}
+.millhs_typeServiteur .millhs_name {
+	-webkit-transform: rotate(-8.5deg);
+	-ms-transform: rotate(-8.5deg);
+	-moz-transform: rotate(-8.5deg);
+	transform: rotate(-8.5deg);
+	position: relative;
+	margin: 148px 0 -22px 2px;
+}
+.millhs_typeServiteur .millhs_small {
+	margin: 146px 0 -20px 2px;
+}
+.millhs_typeSort .millhs_name {
+	position: relative;
+	margin: 140px 0 -14px 2px;
+}
+.millhs_typeSort .millhs_small {
+	margin: 138px 0 -12px 2px;
+}
+.millhs_typeArme .millhs_name {
+	margin: 122px 0 4px 2px;
+}
+.millhs_typeArme .millhs_small {
+	margin: 126px 0 0px 2px;
+}
+.millhs_typeArme .millhs_desc {
+	margin: 29px 50px 2px 52px;
+	width: 175px;
+	color: white;
+}
+.millhs_typeSort .millhs_desc {
+	margin: 34px 50px 2px 52px;
+	width: 175px;
+}
+.millhs_typeArme .millhs_attack {
+	margin: -16px 0 0 6px;
+}
+.millhs_typeArme .millhs_life {
+	margin: -16px -7px 0 0;
+}
+.millhsdeck {
+	width: 100%;
+	min-width: 580px;
+	max-width: 750px;
+	margin: auto;
+}
+.millhs_decklist {
+	float: left;
+	width: calc(100% - 42px);
+	padding: 20px;
+	background-color: #f1f4f5;
+	border: 1px solid #d6dee3;
+}
+.millhs_decklistClass {
+	float: left;
+	width: calc(50% - 12px);
+	background-color: #ffffff;
+	border: 1px solid #d6dee3;
+}
+.millhs_decklistTitle {
+	font-size: 18px;
+	font-family: 'Roboto Condensed';
+	color: #000000;
+	text-align: center;
+}
+.millhs_decklistNeutral {
+	float: right;
+	width: calc(50% - 12px);
+	background-color: #ffffff;
+	border: 1px solid #d6dee3;
+}
+.millhs_decklistHeader1, .millhs_decklistHeader2 {
+	display: inline-block;
+	margin: 0px;
+	vertical-align: middle;
+}
+.millhs_decklistHeader1 {
+	-webkit-transform: scale(0.64);
+	-ms-transform: scale(0.64);
+	-moz-transform: scale(0.64);
+	transform: scale(0.64);
+}
+.millhsdeck #drawDeck1, .millhsdeck #drawDeck2 {
+	margin: 0px auto 15px;
+}
+.millhsdeck .listClass2, .millhsdeck .listClass3, .millhsdeck .listClass4, .millhsdeck .listClass5, .millhsdeck .listClass6,
+.millhsdeck .listClass7, .millhsdeck .listClass8, .millhsdeck .listClass9, .millhsdeck .listClass10, .millhsdeck .listClass1 {
+	height: 50px;
+	width: 50px;
+	margin: 0px;
+	background: url("https://tools.millenium.org/hearthstone-deckbuilder/img/class.png") no-repeat scroll 0px 0px rgba(0, 0, 0, 0);
+}
+.millhsdeck .listClass2 {
+	background-position: 0px 0px;
+}
+.millhsdeck .listClass3 {
+	background-position: -50px 0px;
+}
+.millhsdeck .listClass4 {
+	background-position: -100px 0px;
+}
+.millhsdeck .listClass5 {
+	background-position: -150px 0px;
+}
+.millhsdeck .listClass6 {
+	background-position: -200px 0px;
+}
+.millhsdeck .listClass7 {
+	background-position: 0px -50px;
+}
+.millhsdeck .listClass8 {
+	background-position: -50px -50px;
+}
+.millhsdeck .listClass9 {
+	background-position: -100px -50px;
+}
+.millhsdeck .listClass10 {
+	background-position: -150px -50px;
+}
+.millhsdeck .listClass1 {
+	background-position: -200px -100px;
+}
+.millhs_deckCard {
+	margin: 0px auto;
+	width: 250px;
+	height: 42px;
+	background: url("https://tools.millenium.org/hearthstone-deckbuilder/img/decklist.png") 0px 0px no-repeat;
+	font-family: millhs_Belwe,millhs_BelweIE;
+	text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, -1px 1px 0px #000, 1px -1px 0px #000;
+}
+.millhs_deckCardCost {
+	float: left;
+	width: 42px;
+	height: 32px;
+	padding: 5px 0px;
+	font-size: 32px;
+	line-height: 26px;
+	text-align: center;
+	color: #FFF;
+}
+.millhs_deckCardNameFull, .millhs_deckCardName {
+	float: left;
+	height: 30px;
+	margin: 6px 0px;
+	font-size: 16px;
+	line-height: 28px;
+	text-align: left;
+	color: #FFF;
+	width: 201px;
+	max-width: 201px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+    background-position: right 0px;
+}
+.millhs_deckCardName {
+	width: 182px;
+	max-width: 182px;
+}
+.millhs_deckCardName_small {
+	font-size: 12px;
+}
+.millhs_deckCardCount {
+	float: right;
+	height: 32px;
+	width: 12px;
+	padding: 5px 10px 5px 4px;
+	font-size: 20px;
+	line-height: 28px;
+	text-align: center;
+	color: #ead97d;
+}
+.millhs_deckCardStar {
+	float: right;
+	height: 16px;
+	width: 16px;
+	background: url("https://tools.millenium.org/hearthstone-deckbuilder/img/icons.png") -16px -32px no-repeat;
+	margin: 13px 9px 13px 1px;
+}

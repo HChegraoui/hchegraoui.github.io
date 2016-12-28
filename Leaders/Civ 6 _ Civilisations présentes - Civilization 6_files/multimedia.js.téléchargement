@@ -1,0 +1,84 @@
+$jQ_(document).ready(function($)
+{
+	//On cache toutes les listes de photo.
+	$('.listeMediasLayout').hide();
+
+	//Pour chaque liste de photo, on récupère le premier onglet et on l'affiche.
+	$(".mediasTri").each(function()
+	{
+		var onglet=$(this).find('.ongletTri:first');
+		onglet.addClass('active');
+		var id=onglet.attr('href');
+		$(id).show();
+	});
+	
+	$(".ongletTri").click(function()
+	{
+		var parent=$(this).parent().parent().parent();
+		parent.children('.listeMediasLayout').each(function(){$(this).hide();});
+
+		//On affiche l'onglet
+		var id=$(this).attr('href');
+		$(id).show();
+
+		parent.find('.ongletTri').removeClass('active');
+		$(this).addClass('active');
+
+		return false;
+	});
+});
+
+$jQ_(document).ready(function($)
+{
+	
+	$('.vignetteLayoutActu').click(function(){			
+		var parent=$(this).parent('.tinyVideoActu'),
+			id=parent.find('.loadingLayoutActu').attr('title'),	
+			larg = parent.find('.videoLayoutActu').width(),
+			haut = parent.find('.videoLayoutActu').height(),
+			iframe=parent.find('iframe'),
+			url=$('#player_d'+id).text();
+		$(this).hide();
+		parent.find('.loadingLayoutActu').css('display','block');
+		parent.animate({width: larg, height: haut+20}, 500, "linear", function(){
+			parent.find('.loadingLayoutActu').hide();
+			parent.find('.videoLayoutFermer').css('display','block');
+			parent.find('.videoLayoutActu').css('display','block');
+			iframe.attr('src',url);
+			});
+		writeStats(id);
+	});
+	
+	$('.videoLayoutFermer').click(function(){			
+		var parent=$(this).parent('.tinyVideoActu');;
+		var larg = parent.find('.vignetteLayoutActu').children('.vignette_video_article:first').css('width');
+		var haut = parent.find('.vignetteLayoutActu').children('.vignette_video_article:first').css('height');
+		var iframe=parent.find('iframe');
+		$(this).hide();
+		parent.find('.videoLayoutActu').hide();
+		var temp=parent.find('.videoLayoutActu').html();
+		parent.find('.videoLayoutActu').html(temp);
+		parent.find('.loadingLayoutActu').css('display','block');	
+		parent.find('iframe').attr('src','');
+		parent.animate({width: larg, height: haut}, 500, "linear", function(){
+			parent.find('.loadingLayoutActu').hide();
+			parent.find('.vignetteLayoutActu').show();
+			iframe.attr('src','');
+			iframe.html('');
+			});		
+	});
+});
+
+function reload(obj,id)
+{
+	obj.attr('src',tUrlVideo[id]);
+}
+
+function writeStats(id)
+{
+	var action='/indexLight.php?module=videos&action=videos:writeStats&id_content='+id;
+	$jQ_.ajax({
+	 	url: action,
+	  	dataType: "text"
+	});	
+}

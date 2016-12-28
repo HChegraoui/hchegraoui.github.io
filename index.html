@@ -1,34 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-	<meta  charset="utf-8">
-	<link rel="stylesheet" href="requirement.css" />
-	<title> CivBook </title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Le titre de la page</title>
 </head>
 <body>
-	<header>
-	<h1>Mon premier site internet</h1>
-	</header>
-<div class="section">
+	<div id="blocPage">
+		<header>
+		<div id="header">
+			<div id="logo">
+				<a href="index.html"><img src="logoMini.png" alt="NotreLogo" title="GamingBook" /></a> 
+				<h1>Gaming Book</h1>
+			</div>
+			<nav>
+                <!-- menu telephone -->
+                <ul id="menuportable">
+                    <li><a>Menu</a>
+                        <ul>
+                            <li><a href="jeux.html">jeux</a></li>
+                            <li><a href="wiki.html">wiki</a></li>
+                            <li><a href="evenements.html">évenements</a></li>
+                            <li><a href="contact.html">contact</a></li>
+                        </ul>
+                    </li>
+                </ul>   
+                <!-- menu ordinateur -->
+                <ul id="menu">
+                    <li><a href="jeux.html">jeux</a>
+                        <ul>
+                            <li><a href="nouveautésjeux.html">nouveautés</a></li>
+                            <li><a href="tousjeux.html">tous les jeux</a></li>
+                        </ul>
+            		</li>
+            		<li><a href="wiki.html">wiki</a>
+               		 <ul>
+                        <li><a href="nouveautéswiki.html">nouveautés</a></li>
+                        <li><a href="touswiki.html">tous les wikis</a></li>
+                	</ul>
+            </li>
+            <li><a href="evenements.html">évenements</a></li>
+            <li class="lastmenu"><a href="contact.html">contact</a>
+                <ul>
+                        <li><a href="mail.html">mail</a></li>
+                        <li><a href="post.html">post</a></li>
+                </ul>
+            </li>
+        </ul>       
+            </nav>
+		</div></header>
+		<!-- Corps de la page -->
+		<!-- Article à la une -->
+		<div id="bande"></div>
+		<div id="corps">
+			<div id="ListCiv">
+				<ul>
+					<li><a href="amerique.html"><img src="Leaders/Roosevelt.gif" alt="Leaders" title="leaders"/><span>Amérique</span></a></li>
+					<li><a href="allemagne.html"><img src="Leaders/civ6_leader_1.gif" alt="Leaders" title="leaders"/><span>Allemagne</a></li>
+					<li><a href="France.html"><img src="Leaders/civ6_leader_2.gif" alt="Leaders" title="leaders"/><span>France</a></li>
+					<li><a href="inde.html"><img src="Leaders/civ6_leader_4.gif" alt="Leaders" title="leaders"/><span>Inde</span></a></li>
+					<li><a href="sumer.html"><img src="Leaders/civ6_leader_5.gif" alt="Leaders" title="leaders"/><span>Sumer</span></a></li>
+					<li><a href="norvege.html"><img src="Leaders/civ6_leader_6.gif" alt="Leaders" title="leaders"/><span>Norvege</span></a></li>
+					<li><a href="azteques.html"><img src="Leaders/civ6_leader_7.gif" alt="Leaders" title="leaders"/><span>Azteques</span></a></li>
+					<li><a href="congo.html"><img src="Leaders/civ6_leader_8.gif" alt="Leaders" title="leaders"/><span>Congo</span></a></li>
+					<li><a href="greceperi.html"><img src="Leaders/civ6_leader_10.gif" alt="Leaders" title="leaders"/><span>Grece Peri</span></a></li>
+					<li><a href="japon.html"><img src="Leaders/civ6_leader_14.gif" alt="Leaders" title="leaders"/><span>Japon</span></a></li>
+					<li><a href="grece.html"><img src="Leaders/civ6_leader_15.gif" alt="Leaders" title="leaders"/><span>Grece</span></a></li>
+					<li><a href="rome.html"><img src="Leaders/civ6_leader_16.gif" alt="Leaders" title="leaders"/><span>Rome</span></a></li>
+					<li><a href="angleterre.html"><img src="Leaders/civ6_leader_17.gif" alt="Leaders" title="leaders"/><span>Angleterre</span></a></li>
+					<li><a href="arabie.html"><img src="Leaders/civ6_leader_18.gif" alt="Leaders" title="leaders"/><span>Arabie</span></a></li>
+					<li><a href="russie.html"><img src="Leaders/civ6_leader_19.gif" alt="Leaders" title="leaders"/><span>Russie</span></a></li>
+					<li><a href="egypte.html"><img src="Leaders/cleo.gif" alt="Leaders" title="leaders"/><span>Egypte</span></a></li>
+					<li><a href="chine.html"><img src="Leaders/Qin.gif" alt="Leaders" title="leaders"/><span>Chine</span></a></li>
+				</ul>
+			</div>
+			<section id="presentation">
+			<div id="video"><iframe  src="https://www.youtube.com/embed/i02EB0VoOv8" frameborder="0" allowfullscreen></iframe></div>
+			<article>
+			<h2 id="presentationImg"><img src="miniature.jpg" alt="mini" title="civIndex" />presentation</h2>
+			<p>
+				Civilization VI est un jeu vidéo de stratégie au tour par tour de type 4X développé par Firaxis Games et édité par 2K Games. Il fait partie de la série Civilization. Le jeu est sorti le 21 octobre 2016 sur Windows et le 24 octobre 2016 sur MacOS. La version pour Linux est également prévue.<br/>
+				Ce site vous permet de trouver des amis et jouer avec eux des parties de civilisation 6
 
-	<div class="text1">
-		<p><h2 class="titre1">text1</h2>text1En se réveillant un matin après des rêves agités, Gregor Samsa se retrouva, dans son lit, métamorphosé en un monstrueux insecte. Il était sur le dos, un dos aussi dur qu’une carapace, et, en relevant un peu la tête, il vit, bombé, brun, cloisonné par des arceaux plus rigides, son abdomen sur le haut duquel la couverture, prête à glisser tout à fait, ne tenait plus qu’à peine. Ses nombreuses pattes, lamentablement grêles par comparaison avec la corpulence qu’il avait par ailleurs, grouillaient désespérément sous ses yeux.« Qu’est-ce qui m’est arrivé ? » pensa-t-il. Ce n’était pas un rêve. Sa chambre, une vraie chambre humaine, juste un peu trop petite, était là tranquille entre les quatre murs qu’il connaissait bien. Au-dessus de la table où était déballée une collection d’échantillons de tissus - Samsa était représentant de commerce - on voyait accrochée l’image qu’il avait récemment découpée dans un magazine et mise dans un joli cadre doré. Elle représentait une dame munie d’une toque et d’un boa tous les deux en fourrure et qui, assise bien droite, tendait vers le spectateur un lourd manchon de fourrure où tout son avant-bras avait disparu. Le regard de Gregor se tourna ensuite vers
-		</p>
+			</p>
+			</article>
+			<aside>
+				<h1>fiche technique</h1>
+				<p id="asideImg"><img src="Civilization_VI.svg.png" alt="Pres" titre="maPage"/></p>
+				<div>
+					<table>
+						<tr>
+							<td>Editeur</td>
+							<td>2K Games</td>
+						</tr>
+						<tr>
+							<td>Développeur</td>
+							<td>Firaxis Games</td>
+						</tr>
+						<tr>
+							<td>Distributeur</td>
+							<td>Ed Beach</td>
+						</tr>
+						<tr>
+							<td>Date de Sortie</td>
+							<td>21 octobre 2016</td>
+						</tr>
+						<tr>
+							<td>Mode de jeu</td>
+							<td>Un joueur, multijoueur</td>
+						</tr>
+					</table>
+				</div>
+			</aside>
+			</section>
+			</div>
+			<footer>
+				 <div id="reseaux">
+            <div class="social">
+            <a href="https://www.facebook.com"><img src="images/facebook.png"></a>
+            </div><div class="social">
+            <a href="https://plus.google.com"><img src="images/nouveau-logo-google-plus-rond.png"></a>
+            </div><div class="social">
+            <a href="https://twitter.com/"><img src="images/twitter-logo-final.png"></a>
+            </div><div class="social">
+            <a href="https://www.youtube.com/"><img class="youtube" src="images/YouTube-icon-full_color.png"></a>
+            </div>
+            </div>
+			</footer>
+		</div>
 	</div>
-	<div class="text2">
-
-		<p><h2 class="titre2">text 1</h2>En se réveillant un matin après des rêves agités, Gregor Samsa se retrouva, dans son lit, métamorphosé en un monstrueux insecte. Il était sur le dos, un dos aussi dur qu’une carapace, et, en relevant un peu la tête, il vit, bombé, brun, cloisonné par des arceaux plus rigides, son abdomen sur le haut duquel la couverture, prête à glisser tout à fait, ne tenait plus qu’à peine. Ses nombreuses pattes, lamentablement grêles par comparaison avec la corpulence qu’il avait par ailleurs, grouillaient désespérément sous ses yeux.« Qu’est-ce qui m’est arrivé ? » pensa-t-il. Ce n’était pas un rêve. Sa chambre, une vraie chambre humaine, juste un peu trop petite, était là tranquille entre les quatre murs qu’il connaissait bien. Au-dessus de la table où était déballée une collection d’échantillons de tissus - Samsa était représentant de commerce - on voyait accrochée l’image qu’il avait récemment découpée dans un magazine et mise dans un joli cadre doré. Elle représentait une dame munie d’une toque et d’un boa tous les deux en fourrure et qui, assise bien droite, tendait vers le spectateur un lourd manchon de fourrure où tout son avant-bras avait disparu. Le regard de Gregor se tourna ensuite vers<br/>
-		En se réveillant un matin après des rêves agités, Gregor Samsa se retrouva, dans son lit, métamorphosé en un monstrueux insecte. Il était sur le dos, un dos aussi dur qu’une carapace, et, en relevant un peu la tête, il vit, bombé, brun, cloisonné par des arceaux plus rigides, son abdomen sur le haut duquel la couverture, prête à glisser tout à fait, ne tenait plus qu’à peine. Ses nombreuses pattes, lamentablement grêles par comparaison avec la corpulence qu’il avait par ailleurs, grouillaient désespérément sous ses yeux.« Qu’est-ce qui m’est arrivé ? » pensa-t-il. Ce n’était pas un rêve. Sa chambre, une vraie chambre humaine, juste un peu trop petite, était là tranquille entre les quatre murs qu’il connaissait bien. Au-dessus de la table où était déballée une collection d’échantillons de tissus - Samsa était représentant de commerce - on voyait accrochée l’image qu’il avait récemment découpée dans un magazine et mise dans un joli cadre doré. Elle représentait une dame munie d’une toque et d’un boa tous les deux en fourrure et qui, assise bien droite, tendait vers le spectateur un lourd manchon de fourrure où tout son avant-bras avait disparu. Le regard de Gregor se tourna ensuite vers
-		
-
-		</p>
-	</div>
-
-	<div class="text3">
-		<p><h2  class="titre3">text 3</h2>text3En se réveillant un matin après des rêves agités, Gregor Samsa se retrouva, dans son lit, métamorphosé en un monstrueux insecte. Il était sur le dos, un dos aussi dur qu’une carapace, et, en relevant un peu la tête, il vit, bombé, brun, cloisonné par des arceaux plus rigides, son abdomen sur le haut duquel la couverture, prête à glisser tout à fait, ne tenait plus qu’à peine. Ses nombreuses pattes, lamentablement grêles par comparaison avec la corpulence qu’il avait par ailleurs, grouillaient désespérément sous ses yeux.« Qu’est-ce qui m’est arrivé ? » pensa-t-il. Ce n’était pas un rêve. Sa chambre, une vraie chambre humaine, juste un peu trop petite, était là tranquille entre les quatre murs qu’il connaissait bien. Au-dessus de la table où était déballée une collection d’échantillons de tissus - Samsa était représentant de commerce - on voyait accrochée l’image qu’il avait récemment découpée dans un magazine et mise dans un joli cadre doré. Elle représentait une dame munie d’une toque et d’un boa tous les deux en fourrure et qui, assise bien droite, tendait vers le spectateur un lourd manchon de fourrure où tout son avant-bras avait disparu. Le regard de Gregor se tourna ensuite vers
-		</p>
-	</div>
-	</div>
-
 </body>
 </html>

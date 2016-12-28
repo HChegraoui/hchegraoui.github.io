@@ -1,0 +1,27 @@
+$jQ_(document).ready(function($)
+{
+	$('#formInscriptionBloc>.titre>a').click(function(){
+
+		$('#sinscrire').attr('id','sinscrireold').fadeOut(
+			function(){
+				$('#formInscriptionBloc>.titre').after(
+						'<iframe id="iframeInscription" src="/index.php?module=user&action=inscription:index" style="width: 652px;height: 525px;display: none" scrolling="no" frameborder="0" seamless>test</iframe>'
+						).each(
+							function(){
+								$('#iframeInscription').slideDown();
+							});
+			});
+		return false;
+	});
+	$("#link_regles_mil").overlay({target: '#overlay_reglement', top: '40%',mask:{color: '#000', zIndex: 10000}, zIndex: 10001, effect: 'apple', onBeforeLoad: function() {
+
+        // grab wrapper element inside content
+        var wrap = this.getOverlay().find(".contentWrap");
+
+        // load the page specified in the trigger
+        wrap.load(this.getTrigger().attr("href"));
+    }});
+//	$('.addComment textarea').autoResize({
+//		extraSpace : 0
+//	});
+});

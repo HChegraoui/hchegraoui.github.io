@@ -1,0 +1,432 @@
+	$('.page_webtv .carroussel_right').live("click", function(ev) {
+
+		var carroussel = $('.page_webtv .programme_detailed_live');
+		var programme = $('#container_programme');
+		var size = -carroussel.width() + programme.width();
+		if(parseInt(carroussel.css("left")) - 300 < size){
+			carroussel.animate({ "left": size }, "fast" );
+		} else {
+			carroussel.animate({ "left": parseInt(carroussel.css("left")) - 300 }, "fast" );
+		}
+	});	
+
+	$('.page_webtv .carroussel_left').live("click", function(ev) {
+
+		var carroussel = $('.page_webtv .programme_detailed_live');
+		if(parseInt(carroussel.css("left")) + 300 > 0){
+			carroussel.animate({ "left": 0 }, "fast" );
+		} else {
+			carroussel.animate({ "left": parseInt(carroussel.css("left")) + 300 }, "fast" );
+		}
+	});
+
+	$('.page_webtv #container_detailed_live').live("mouseenter", function() {
+
+		$('.page_webtv .carroussel_left').css("visibility", "visible");
+		$('.page_webtv .carroussel_right').css("visibility", "visible");
+	});
+
+	$('.page_webtv #container_detailed_live').live("mouseleave", function() {
+
+		$('.page_webtv .carroussel_left').css("visibility", "hidden");
+		$('.page_webtv .carroussel_right').css("visibility", "hidden");
+	});
+
+	$('#sidebar .nav-primary  li.level0').live("hover",function(ev) {		
+
+		$('.submenu').hide();
+		$('.sub-menu').hide();
+		if($('.sub-menu').hasClass("one_visible")){
+			$(this).children('.sub-menu').show();
+		} else {
+			$('.sub-menu').stop(true,true);
+			$(this).children('.sub-menu').show();
+			$('.sub-menu').animate({left: "225px"}, 300, 'easeInOutQuart');
+		}
+		
+
+		$('.sub-menu').removeClass("one_visible");
+		ev.preventDefault();
+		$("#sidebar .nav-primary  li.level0 > div").css("display","none");
+		$("#sidebar .nav-primary  li.level0 > div > img").attr("src","/images/menu-v7/icon-arrow-right.png");
+		
+		$(this).children('.sub-menu').addClass("one_visible");
+		$(this).children('a').addClass("active");
+	    
+	});
+
+		$('#sidebar .nav-primary  li.level0').live("mouseover", function(){
+		$(this).children("div").css("display","block");
+		if($(this).children("a").attr("class")!="arrow_disabled")
+		{
+			$(this).children("a").css('backgroundColor','#343738');
+		}
+	});
+	$('#sidebar .nav-primary  li.level0').live("mouseout", function(){
+		if($(this).children('a').attr("class")=="active")
+		{
+			$(this).children("div").css("display","block");
+		}
+		else
+		{
+			$(this).children("div").css("display","none");
+		}
+		if($(this).attr("id")!="site_actif"){
+			$(this).children("a").css('backgroundColor','#282a2b');
+		}
+	});
+
+	$('#sidebar').live("hover", function(ev) {
+		if(window.matchMedia("(max-width:1599px)").matches || $("#sidebar.sidebar-webtv").length != 0){
+			$(".mCSB_scrollTools").css("left","224px");
+		}
+		$('.nav-primary').css("width","230px");
+		$('#nav').css("width","229px");
+		$("#sidebar p.title").css("display","block");
+	});
+
+	$('#sidebar').live("mouseleave", function(ev) {
+
+		ev.preventDefault();
+
+		$('.sub-menu').animate({left: "-5px"}, 300, 'easeInOutQuart');
+		$('.sub-menu').hide();
+		$('.clic-arrow-games').css("display","none");
+		$('.sub-menu').removeClass("one_visible");
+		$('li.level0 a').removeClass("active");
+		//$('#sidebar .sub-menu').not($(this).parents('.sub-menu')).slideUp();
+		//$("#sidebar .nav-primary  li  div  img").attr("src","/images/menu-v7/icon-arrow-left.png");
+		//$(this).children('a').removeClass("active");
+		if(window.matchMedia("(max-width:1599px)").matches || $("#sidebar.sidebar-webtv").length != 0){
+			$('.mCSB_scrollTools').css("left","40px");
+					$('.nav-primary').css("width","46px");
+					$("#nav").css("width","46px");
+					//$("#sidebar.sidebar-webtv #nav .nav-primary > li.level0 > a > p.title").css("display","none");
+		}
+	    ev.stopPropagation();
+	});
+
+
+	$('#sidebar').live("mouseenter", function(ev){
+		if(window.matchMedia("(max-width:1599px)").matches || $("#sidebar.sidebar-webtv").length != 0){
+			$("#sidebar p.title").css("display","block");
+		}
+	});
+	$('.#sidebar').live("mouseleave", function(ev) {
+		if(window.matchMedia("(max-width:1599px)").matches ||  $("#sidebar.sidebar-webtv").length != 0){
+			$("#sidebar p.title").css("display","none");
+			$('.sub-menu').hide();
+			$('.clic-arrow-games').css("display","none");
+			$('.sub-menu').removeClass("one_visible");
+			$('li.level0 a').removeClass("active");
+		}
+	});
+
+
+	$('#sidebar .sub-menu  li.submenu-container a').live("hover", function(ev){
+		ev.preventDefault();
+		mainMenu(jQuery(this).parents('.submenu-container:first'));
+	});
+
+	$('#sidebar .nav-primary  li.level0 > ul.sub-menu > li').live("hover",function(ev){
+		if(!$(this).hasClass("submenu-container")){
+			$(".submenu").hide();
+		}
+	});
+
+	var sidebar_state = true;
+	$("#link-sidebar").live("click",function(evt){
+		evt.preventDefault();
+		if(sidebar_state==true)
+		{
+			$("#nav").animate({ "left": "-230px" }, "fast" );
+			$("#sidebar").addClass("undeployed");
+			$("#sidebar").removeClass("deployed");
+			//if((!$("#sidebar.sidebar-webtv").length)){
+				if(window.matchMedia("(max-width:1599px)").matches || $("#sidebar.sidebar-webtv").length != 0){
+					$("body").animate({"margin-left": "0px"}, "fast");
+				} else {
+					$("body").animate({"margin-left": "0px"}, "fast");
+				}
+			//}
+			
+			/*document.getElementById("sidebar").style.visibility="hidden";*/
+			document.getElementById("iconSidebar").setAttribute("src","http://static.mnium.org/images/menu-v7/icon-sidebar-unactived.png");
+			if($(".nano .main-webtv").length!==0){
+				$(".nano").css("width", "calc(100% - 0px)");
+				$(window).resize();
+			}
+			sidebar_state = false;
+		}else {
+			/*document.getElementById("sidebar").style.visibility="visible";*/
+			$("#nav").animate({ "left": "0px" }, "fast");
+			$("#sidebar").addClass("deployed");
+			$("#sidebar").removeClass("undeployed");
+
+			if (!$("#sidebar.sidebar-webtv").length){
+				if(window.matchMedia("(max-width:1599px)").matches || $("#sidebar.sidebar-webtv").length != 0){
+					$("body").animate({"margin-left": "40px"}, "fast");
+				} else {
+					$("body").animate({"margin-left": "217px"}, "fast");
+				}
+			} else {
+				if(window.matchMedia("(max-width:1599px)").matches || $("#sidebar.sidebar-webtv").length != 0){
+					$("body").animate({"margin-left": "40px"}, "fast");
+				} else {
+					$("body").animate({"margin-left": "217px"}, "fast");
+				}
+			}
+
+			document.getElementById("iconSidebar").setAttribute("src","http://static.mnium.org/images/menu-v7/icon-sidebar.png");
+			if($(".nano .main-webtv").length!==0){
+				$(".nano").css("width", "calc(100% - 40px)");
+				$(window).resize();
+			}
+			sidebar_state = true;
+		}
+	});
+
+
+
+$('.page_webtv .programme_detailed_live').live("mousedown", function(ev) {
+	ev.preventDefault();
+	$(this).css("cursor","url('/images/ui/grabbing.cur'), pointer");
+	var startDragValue = ev.clientX;
+	$('.page_webtv .programme_detailed_live').on("mousemove", function(ev) {
+		ev.preventDefault();
+		var diffPosition = startDragValue - ev.clientX;
+		var carroussel = $('.page_webtv .programme_detailed_live');
+		var leftPosition = parseInt(carroussel.css("left"));
+		var programme = $('#container_programme');
+		var size = -carroussel.width() + programme.width();
+		if(leftPosition - diffPosition < size || leftPosition - diffPosition > 0){
+		} else {
+			$('.page_webtv .programme_detailed_live').css("left", leftPosition - diffPosition);
+			startDragValue = ev.clientX;
+		}
+
+	});
+});
+$('.page_webtv .programme_detailed_live').live("mouseup", function() {
+	//console.log("hello up");
+	$(this).css("cursor","url('/images/ui/grab.cur'), pointer");
+	$('.page_webtv .programme_detailed_live').off("mousemove");
+});
+
+$('.page_webtv .programme_detailed_live').live("mouseleave", function() {
+	$(this).css("cursor","url('/images/ui/grab.cur'), pointer");
+	$('.page_webtv .programme_detailed_live').off("mousemove");
+});
+
+
+
+
+
+
+
+$(document).ready(function() {
+
+	if($('.programme_indicator').length != 0){
+		setInterval(function(){
+			var currentLeft = parseFloat($('.programme_indicator').css("left"));
+			var testtime = currentLeft+2.233333333333333;
+			$('.programme_indicator').css("left", testtime);
+		}, 60000);
+	}
+
+	var carroussel = $('.page_webtv .programme_detailed_live');
+	var programme = $('#container_programme');
+	var size = -carroussel.width() + programme.width();
+	if(parseInt(carroussel.css("left")) < size){
+		carroussel.css({ "left": size });
+	}
+
+	$('#sidebar .nav-primary  li').mouseleave(function(ev) {
+		ev.preventDefault();
+		
+		//ev.stopPropagation();
+		//$('#sidebar .sub-menu').not($(this).parents('.sub-menu')).slideUp();
+		
+	});
+
+	//specific sidebar-webtv
+	$('#sidebar.sidebar-webtv').mouseover(function(ev) {	
+		//$("#sidebar.sidebar-webtv > #nav > .nav-primary  li.level0 > div.clic-arrow-games").css("display","block");
+		$(this).css("width","230px");
+		//$('#sidebar.sidebar-webtv > #nav > .nav-primary  li.level0 > a > p.title').css("display","block");
+		//$('#sidebar.sidebar-webtv > #nav > .nav-primary  li.level0 > ul > li > a > p').css("display","block");
+		//$('#sidebar.sidebar-webtv > #nav > .nav-primary  .nav-category > a > p.title').css("max-width","none");
+	});
+	$('#sidebar.sidebar-webtv').mouseout(function(ev) {
+		//$("#sidebar.sidebar-webtv > #nav > .nav-primary  li.level0 > div.clic-arrow-games").css("display","none");
+		$(this).css("width","48px");
+		//$('#sidebar.sidebar-webtv > #nav > .nav-primary  li.level0 > a > p.title').css("display","none");
+		//$('#sidebar.sidebar-webtv > #nav > .nav-primary  li.level0 > ul > li > a > p').css("display","none");
+	});
+
+
+
+
+	$(window).resize(function(){
+		if(!window.matchMedia("(max-width:1599px)").matches && $("#sidebar.sidebar-webtv").length == 0)
+		{
+			$('.nav-primary').css("width","230px");
+			$("#sidebar p.title").css("display","block");
+			$("#sidebar #nav").css("width","229px");
+			$(".mCSB_scrollTools").css("left","224px");
+			/*$('.nav-primary').css("width", "228px");*/
+			/*if($('#site_actif > a').hasClass("active")){
+				$("#site_actif > .sub-menu").css("display", "block");
+			}*/
+			if(!$("#sidebar.sidebar-webtv").length){
+				if($("#sidebar").hasClass("deployed")){
+					$("body").css("margin-left", "217px");
+				}
+				//$("#sidebar  #nav  .nav-primary  li.level0 > div.clic-arrow-games").css("display","block");
+				$("#sidebar").css("width","230px");
+				//$('#sidebar  #nav  .nav-primary  li.level0 > a > p.title').css("display","block");
+				//$('#sidebar  #nav  .nav-primary  li.level0 > ul > li > a > p').css("display","block");
+				//$('#sidebar  #nav  .nav-primary  .nav-category > a > p.title').css("max-width","none");
+			} else {
+				if($("#sidebar").hasClass("deployed")){
+					$("body").css("margin-left", "217px");
+				}
+			}
+		}
+		else
+		{
+			$(".mCSB_scrollTools").css("left","40px");
+			$("#sidebar #nav").css("width","46px");
+			$('.nav-primary').css("width","46px");
+			$('.sub-menu').hide();
+			$('.clic-arrow-games').css("display","none");
+			$('.sub-menu').removeClass("one_visible");
+			$('li.level0 a').removeClass("active");
+			$("#sidebar p.title").css("display","none");
+			/*$('.nav-primary').css("width", "46px");*/
+
+			/*if($('#site_actif > a').hasClass("active")){
+				$("#site_actif > .sub-menu").css("display", "none");
+			}*/
+			if(!$("#sidebar.sidebar-webtv").length){
+				if($("#sidebar").hasClass("deployed")){
+					$("body").css("margin-left", "40px");
+				}
+				//$("#sidebar  #nav  .nav-primary  li.level0 > div.clic-arrow-games").css("display","none");
+				$("#sidebar").css("width","48px");
+				//$('#sidebar  #nav  .nav-primary  li.level0 > a > p.title').css("display","none");
+				//$('#sidebar  #nav  .nav-primary  li.level0 > ul > li > a > p').css("display","none");
+			} else {
+				if($("#sidebar").hasClass("deployed")){
+					$("body").css("margin-left", "40px");
+				} else {
+					$("body").css("margin-left", "0px");
+				}
+			}
+		}
+	});
+
+
+	$('#sidebar .nav-primary  li.level0 > a').mousedown(function(ev) {
+		$(this).css('backgroundColor','#1f2122');
+	});
+	$('#sidebar .nav-primary  li.level0 > a').mouseup(function(ev) {
+		$(this).css('backgroundColor','rgba(35,38,39,1)');
+	});
+	$("#sidebar .sub-menu > li > a.basic-a-item").mouseover(function(ev) {
+		$(this).css("color","#f5f5f5");
+		//$(this).css("text-shadow","rgba(255,255,255,0.5) 0px 0px 5px");
+		//$(this).children("img.fleche-sub-menu").attr("src","http://static.mnium.org/images/menu-v7/icon-generique-white.png");
+		//$(this).children("img.img-deroule").attr("src","http://static.mnium.org/images/menu-v7/arrow-deroule-hover.png");
+	});
+	$("#sidebar .sub-menu > li > a.basic-a-item").mouseout(function(ev) {
+		$(this).css("color","#C6CFD3");
+		//$(this).css("text-shadow","none");
+		//$(this).children("img.fleche-sub-menu").attr("src","http://static.mnium.org/images/menu-v7/icon-generique.png");
+		//$(this).children("img.img-deroule").attr("src","http://static.mnium.org/images/menu-v7/arrow-deroule.png");
+	});
+	$("#sidebar ul .nav-category > a").mouseover(function(ev) {
+		$(this).css("backgroundColor","#2f3336");
+	});
+	$("#sidebar ul .nav-category > a").mouseout(function(ev) {
+		$(this).css("backgroundColor","#282a2b");
+	});
+
+
+});
+window.addEventListener('load', init, false );
+function init(){
+
+	var sidebar = true;
+	document.getElementById("link-millenium").addEventListener("mouseover",function(){
+		document.getElementById("milleniumLogo").setAttribute("src","images/menu-v7/logo-m-orange-hover.png");
+	});
+	document.getElementById("link-millenium").addEventListener("mouseout",function(){
+		document.getElementById("milleniumLogo").setAttribute("src","images/menu-v7/logo-m-orange.png");
+	});
+
+	document.getElementById("link-sidebar").addEventListener("mouseover",function(){
+		if(sidebar==true)
+		{
+			document.getElementById("iconSidebar").setAttribute("src","http://static.mnium.org/images/menu-v7/icon-sidebar-hover.png");
+		}else{
+			document.getElementById("iconSidebar").setAttribute("src","http://static.mnium.org/images/menu-v7/icon-sidebar-unactived-hover.png");
+		}
+	});
+	document.getElementById("link-sidebar").addEventListener("mouseout",function(){
+		if(sidebar==true)
+		{
+			document.getElementById("iconSidebar").setAttribute("src","http://static.mnium.org/images/menu-v7/icon-sidebar.png");
+		}else{
+			document.getElementById("iconSidebar").setAttribute("src","http://static.mnium.org/images/menu-v7/icon-sidebar-unactived.png");
+		}
+	});
+
+	/* Hover Effect TV / Vidéos */
+	document.getElementById("link-tvVideo").addEventListener("mouseover",function(){
+		//document.getElementById("img-tvVideo").setAttribute("src","http://static.mnium.org/images/menu-v7/tv-hover.png");
+		//document.getElementById("tvVideoTitle").style.textShadow="0px 0px 5px rgba(255,255,255,0.5)";
+	});
+	document.getElementById("link-tvVideo").addEventListener("mouseout",function(){
+		//document.getElementById("img-tvVideo").setAttribute("src","http://static.mnium.org/images/menu-v7/tv.png");
+		//document.getElementById("tvVideoTitle").style.textShadow="none";
+	});
+
+	/* Hover Effect Actualités */
+	document.getElementById("link-actu").addEventListener("mouseover",function(){
+		//document.getElementById("img-actu").setAttribute("src","http://static.mnium.org/images/menu-v7/actu-hover.png");
+		//document.getElementById("actuTitle").style.textShadow="0px 0px 5px rgba(255,255,255,0.5)";
+	});
+	document.getElementById("link-actu").addEventListener("mouseout",function(){
+		//document.getElementById("img-actu").setAttribute("src","http://static.mnium.org/images/menu-v7/actu.png");
+		//document.getElementById("actuTitle").style.textShadow="none";
+	});	
+	/* MouseDown Effect Actualités */
+
+	document.getElementById("link-actu").addEventListener("mouseup",function(){
+		console.log("up");
+		//document.getElementById("img-actu").setAttribute("src","http://static.mnium.org/images/menu-v7/actu.png");
+		//document.getElementById("actuTitle").style.textShadow="none";
+	});
+
+	/* Hover Effect Team Pro */
+	document.getElementById("link-teamPro").addEventListener("mouseover",function(){
+		//document.getElementById("img-teamPro").setAttribute("src","http://static.mnium.org/images/menu-v7/teampro-hover.png");
+		//document.getElementById("teamProTitle").style.textShadow="0px 0px 5px rgba(255,255,255,0.5)";
+	});
+	document.getElementById("link-teamPro").addEventListener("mouseout",function(){
+		//document.getElementById("img-teamPro").setAttribute("src","http://static.mnium.org/images/menu-v7/teampro.png");
+		//document.getElementById("teamProTitle").style.textShadow="none";
+	});
+
+	/* Hover Effect Store */
+	document.getElementById("link-store").addEventListener("mouseover",function(){
+		//document.getElementById("img-store").setAttribute("src","http://static.mnium.org/images/menu-v7/store-hover.png");
+		//document.getElementById("storeTitle").style.textShadow="0px 0px 5px rgba(255,255,255,0.5)";
+	});
+	document.getElementById("link-store").addEventListener("mouseout",function(){
+		//document.getElementById("img-store").setAttribute("src","http://static.mnium.org/images/menu-v7/store.png");
+		//document.getElementById("storeTitle").style.textShadow="none";
+	});
+
+}

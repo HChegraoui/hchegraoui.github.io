@@ -1,0 +1,90 @@
+//document.domain = "millenium.org";
+
+loaded_tooltips = new Array();
+stack_tooltips = new Array();
+tt_iterator = 0;
+svg_loaded = false;
+
+function stack_tooltip(tt_id, query) {
+	if(!(tt_id in stack_tooltips)) {
+		stack_tooltips[tt_id] = new Array();
+	}
+	stack_tooltips[tt_id].push(query);
+}
+
+function load_tooltip(tt_id, callBack, query) {
+	if(tt_id in loaded_tooltips) {
+		eval(callBack + "(tt_id, query)");
+	}
+	else {
+		var script = document.createElement('script');
+		script.type = "text/javascript";
+		script.id   = "script_tooltip_" + tt_id;
+		pair = new Array();
+		stack_tooltip(tt_id, query);
+		script.src  = "http://lab.millenium.org/tooltips/html_cache/tt_" + tt_id + ".js";
+		document.body.appendChild(script);
+	}
+	
+}
+
+function pop_tooltip(tt_id) {
+	query = stack_tooltips[tt_id].pop();
+	register_loaded_tooltip(tt_id, query);
+}
+
+function register_loaded_tooltip(tt_id, query) {
+	if(jQuery(query).attr("href") == "#" || jQuery(query).attr("href") == "" || jQuery(query).attr("xlink:href") == "" || jQuery(query).attr("xlink:href") == "#") {
+		jQuery(query).click(function (e) {
+			e.preventDefault();
+		});
+	}
+	jQuery(query).qtip({
+		content: {
+			text: loaded_tooltips[tt_id]
+		}
+	});
+}
+
+function extract_tooltip_id(str) {
+	return str.substr(48, 5);
+}
+
+function register_tooltip(query, type) {
+	if(type == "a") {
+		title = jQuery(query).attr("title");
+	}
+	else if(type == "img") {
+		title = jQuery(query).attr("alt");
+	}
+	else if(type == "xlink") {
+		title = jQuery(query).attr("xlink:title");
+		jQuery(query).attr("xlink:title", "");
+	}
+	tt_id = extract_tooltip_id(title);
+	load_tooltip(tt_id,"register_loaded_tooltip", query);
+}
+
+function register_tooltips() {
+	jQuery('a[title^="http://lab.millenium.org/tooltips/html_cache/"]').each(function() {
+		register_tooltip(this, "a");
+	});
+	jQuery('img[alt^="http://lab.millenium.org/tooltips/html_cache/"]').each(function() {
+		register_tooltip(this, "img");
+	});
+	jQuery('svg').live("hover", function() {
+		if(!svg_loaded) {
+			svg_loaded = true;
+			jQuery('a').each(function() {
+				if(jQuery(this).attr("xlink:title")) {
+					register_tooltip(this, "xlink");
+				}
+			});
+		}
+	});
+}
+
+jQuery(function() {
+	register_tooltips();
+});
+

@@ -246,6 +246,10 @@ article{
     margin-left: 20px;
     text-indent: 25px;
 }
+article h2 {
+	font-family: FFF;
+	  text-transform: uppercase;
+}
 article p{
     text-align: justify;
 }

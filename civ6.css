@@ -243,7 +243,8 @@ section {
 article{
     width: 60%;
     margin-right: 5%;
-    margin-left: 10px;
+    margin-left: 20px;
+    text-indent: 25px;
 }
 article p{
     text-align: justify;

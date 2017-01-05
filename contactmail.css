@@ -189,6 +189,7 @@ html>body #menu li{
     margin: auto;
     width: 70%;
     background: white;
+    min-height: 900px;
     max-width: 865px;
     height: 100%;
     box-shadow: 1px 1px 12px #555;
@@ -293,4 +294,26 @@ footer {
 .footerbuttons h4{
         display:none;
     }
+}
+.Perso ul{
+    list-style: none;
+}
+.inf{
+    opacity: 0;
+        position: absolute; /* Position absolue */
+        width: 24.75%; /* Largeur des sous-listes */
+        visibility: hidden; /* Hop, on envoie loin du champ de vision */
+        padding-left: 1px;
+        line-height: 35px;
+        transition-property: opacity;
+        transition-duration: 0.5s; /* La transition dure 1s */
+}
+
+
+.x:hover + .inf {
+    visibility: visible; /* Repositionnement normal */
+    opacity: 0.9; /* Repositionnement normal */
+    min-height: 0; /* Corrige un bug sous IE */
+    transition-duration: 1.5s;
+    transition-delay: 0.5s;
 }
